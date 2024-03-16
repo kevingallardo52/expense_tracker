@@ -59,7 +59,10 @@ class Settings extends WidgetWithTitle {
                         padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
                         child: items[index].isDestructive
                             ? Container()
-                            : const Icon(Icons.keyboard_arrow_right_sharp),
+                            : const Icon(
+                                Icons.keyboard_arrow_right_sharp,
+                                size: 40,
+                              ),
                       ),
                     )))
           ])),
