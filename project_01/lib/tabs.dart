@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:project_01/pages/add.dart';
-import 'package:project_01/pages/expenses.dart';
-import 'package:project_01/pages/goals.dart';
-import 'package:project_01/pages/reports.dart';
-import 'package:project_01/pages/settings.dart';
+import 'package:flutter/cupertino.dart';
+import './pages/expenses.dart';
+import './pages/reports.dart';
+import './pages/add.dart';
+import './pages/settings.dart';
+import './types/widgets.dart';
+import 'pages/add_goals.dart';
 
 class TabsController extends StatefulWidget {
   const TabsController({super.key});
@@ -15,44 +16,56 @@ class TabsController extends StatefulWidget {
 class _TabsControllerState extends State<TabsController> {
   var _selectedIndex = 0;
 
+  static const List<WidgetWithTitle> _pages = [
+    Expenses(),
+    Reports(),
+    Add(),
+    AddGoals(),
+    Settings(),
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  static const List _pages = [
-    Expenses(),
-    Reports(),
-    Add(),
-    Goals(),
-    Settings(),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 5,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(_pages[_selectedIndex].title),
-        ),
-        body: _pages[_selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
+    return CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          backgroundColor: Color.fromARGB(255, 48, 69, 112),
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.paid), label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart), label: "Reports"),
-            BottomNavigationBarItem(icon: Icon(Icons.add), label: "Add"),
-            BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: "Goals"),
+              icon: Icon(CupertinoIcons.tray_arrow_up),
+              label: 'Expenses',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Settings"),
+              icon: Icon(CupertinoIcons.chart_bar_fill),
+              label: 'Reports',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.add),
+              label: 'Add',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.add_circled_solid),
+              label: 'Goals',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.gear_solid),
+              label: 'Settings',
+            ),
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          type: BottomNavigationBarType.fixed,
         ),
-      ),
-    );
+        tabBuilder: (BuildContext context, int index) {
+          return CupertinoTabView(
+            builder: (BuildContext context) {
+              return _pages[index];
+            },
+          );
+        });
   }
 }

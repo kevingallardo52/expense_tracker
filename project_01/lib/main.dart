@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import '../tabs.dart';
 
 void main() {
@@ -11,13 +11,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Expense Tracker',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
-        useMaterial3: true,
-      ),
-      home: const TabsController(),
-    );
+    return const CupertinoApp(
+        title: 'Expense Tracker',
+        theme: CupertinoThemeData(
+            primaryColor: Color.fromARGB(255, 41, 141, 255),
+            brightness: Brightness.light),
+        home: TabsController());
   }
 }
