@@ -1,4 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
@@ -51,6 +50,10 @@ class _GoalsCreateState extends State<GoalsCreate> {
     setState(() => goals.add(newGoal));
     _textController.clear();
     _amountController.clear();
+  }
+
+  void _updateGoalProgress(Goal goal, double progress) {
+    
   }
 
   @override
