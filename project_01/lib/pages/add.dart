@@ -32,7 +32,15 @@ class AddContent extends StatefulWidget {
 class _AddContentState extends State<AddContent> {
   late TextEditingController _amountController;
   late TextEditingController _noteController;
- 
+  var realmCategories = realm.all<Category>();
+  StreamSubscription<RealmResultsChanges<Category>>? _categoriesSub;
+
+  List<Category> categories = [];
+  int _selectedRecurrenceIndex = 0;
+  int _selectedCategoryIndex = 0;
+  DateTime _selectedDate = DateTime.now();
+  bool canSubmit = false;
+
   @override
   void initState() {
     super.initState();
