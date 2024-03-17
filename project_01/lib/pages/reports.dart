@@ -42,6 +42,8 @@ class _ReportsContent extends State<ReportsContent> {
 
   double _spentInPeriod = 0;
   double _avgPerDay = 0;
+  int _FeatureToggle = 0;
+
 
   StreamSubscription<RealmResultsChanges<Expense>>? _expensesSub;
   var realmExpenses = realm.all<Expense>();
