@@ -36,26 +36,7 @@ class _TabsControllerState extends State<TabsController> {
         tabBar: CupertinoTabBar(
           backgroundColor: Color.fromARGB(255, 48, 69, 112),
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.tray_arrow_up),
-              label: 'Expenses',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.chart_bar_fill),
-              label: 'Reports',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.add),
-              label: 'Add',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.add_circled_solid),
-              label: 'Goals',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.gear_solid),
-              label: 'Settings',
-            ),
+            
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
